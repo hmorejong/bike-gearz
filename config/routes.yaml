@@ -6,6 +6,14 @@ app_register:
     path: /register
     controller: App\Controller\RegistrationController::register
 
+app_login:
+    path: /login
+    controller: App\Controller\LoginController::index
+
+app_logout:
+    path: /logout
+    controller: App\Controller\LoginController::index
+
 app_bicycle_index:
     path: /bikes
     controller: App\Controller\BicycleController::index
