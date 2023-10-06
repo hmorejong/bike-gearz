@@ -5,7 +5,7 @@
 {% block body %}
     <div class="row mx-5 justify-content-between">
         <div class="col">
-            <h1 class="h4 text-gray-900 pt-2">Overview</h1>
+            <h1 class="h4 text-gray-900 pt-2">Overview: {{ bicycle.brand }}</h1>
         </div>
         <div class="col text-end pe-0">
             {{ include('bicycle/_delete_form.html.twig') }}
@@ -29,11 +29,13 @@
                         <p>{{ bicycle.description }}</p>
                     </div>
                 </div>
+                {% if bicycle.price %}
                 <div class="col-md-3 text-end">
                     <div>
                         <h5 class="text-danger">${{ bicycle.price }}</h5>
                     </div>
                 </div>
+                {% endif %}
             </div>
             <div class="text-end">
                 <a class="btn btn-secondary shadow-sm" title="Back to list" href="{{ path('app_bicycle_index') }}"><i class="fa-solid fa-arrow-left"></i></a>

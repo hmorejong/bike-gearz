@@ -90,6 +90,18 @@ footer.sticky-footer {
   color: #80808078;
 }
 
+.bike-form label {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+::placeholder {
+  color: #80808078;
+  opacity: 1;
+  font-size: 14px;
+}
+
 @media (min-width: 768px) {
   .sidebar {
     width: 14rem !important;

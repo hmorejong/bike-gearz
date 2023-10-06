@@ -18,7 +18,7 @@ class BicycleFormType extends AbstractType
             ->add('model')
             ->add('color')
             ->add('price')
-            ->add('description', TextareaType::class)
+            ->add('description', TextareaType::class, ['required' => false])
             ->add('category', ChoiceType::class, [
                 'placeholder' => 'Choose a category',
                 'choices'  => [
