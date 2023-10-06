@@ -1,42 +1,71 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Part{% endblock %}
+{% block title %}Part Overview{% endblock %}
 
 {% block body %}
-    <h1>Part</h1>
+    <div class="row mx-5 justify-content-between">
+        <div class="col">
+            <h1 class="h4 text-gray-900 pt-2">Overview Part:</h1>
+        </div>
+        <div class="col text-end pe-0">
+            {{ include('part/_delete_form.html.twig') }}
+        </div>
+    </div>
+    <div class="list-group mx-5 mb-4">
+        <div class="list-group-item py-3" aria-current="true">
+            <div class="row g-0">
+                <div class="col-md-1 text-center">
+                    <div class="icon-preview">
+                        <i class="fas fa-fw fa-wrench"></i>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="d-flex w-100 justify-content-between mt-3">
+                        <h6 class="mb-1">
+                            {{ part.name }}
+                            {% if part.color %}
+                                ({{ part.color }})
+                            {% endif %}
+                        </h6>
+                    </div>
 
-    <table class="table">
-        <tbody>
-        <tr>
-            <th>Id</th>
-            <td>{{ part.id }}</td>
-        </tr>
-        <tr>
-            <th>Name</th>
-            <td>{{ part.name }}</td>
-        </tr>
-        <tr>
-            <th>Price</th>
-            <td>{{ part.price }}</td>
-        </tr>
-        <tr>
-            <th>Color</th>
-            <td>{{ part.color }}</td>
-        </tr>
-        <tr>
-            <th>Size</th>
-            <td>{{ part.size }}</td>
-        </tr>
-        <tr>
-            <th>Details</th>
-            <td>{{ part.details }}</td>
-        </tr>
-        </tbody>
-    </table>
+                    {% if part.size %}
+                        <div class="mt-4">
+                            <span class="fw-bold">Size</span>
+                            <p>{{ part.size }}</p>
+                        </div>
+                    {% endif %}
 
-    <a href="{{ path('app_part_index') }}">back to list</a>
+                    {% if part.details %}
+                        <div class="mt-4">
+                            <span class="fw-bold">Description</span>
+                            <p>{{ part.details }}</p>
+                        </div>
+                    {% endif %}
 
-    <a href="{{ path('app_part_edit', {'id': part.id}) }}">edit</a>
-
-    {{ include('part/_delete_form.html.twig') }}
+                    {% if part.bicycle %}
+                        <div class="mt-4">
+                            <span class="fw-bold">Linked Bike</span>
+                        </div>
+                        <a href="{{ path('app_bicycle_show', {'id': part.bicycle.id}) }}">{{ part.bicycle.brand }} {{ part.bicycle.model }} {{ part.bicycle.category }}</a>
+                    {% endif %}
+                </div>
+                {% if part.price %}
+                <div class="col-md-3 text-end">
+                    <div>
+                        <h5 class="text-danger">${{ part.price }}</h5>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="text-end">
+                <a class="btn btn-secondary shadow-sm" title="Back to list" href="{{ path('app_part_index') }}">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </a>
+                <a class="btn btn-primary shadow-sm" title="Edit bike" href="{{ path('app_part_edit', {'id': part.id}) }}">
+                    <i class="fa-regular fa-pen-to-square"></i> Edit
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

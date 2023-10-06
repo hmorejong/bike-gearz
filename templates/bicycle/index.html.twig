@@ -34,8 +34,8 @@
                         {% elseif not bicycle.price %}
                             <div class="mb-3"></div>
                         {% endif %}
-                        <a class="btn btn-secondary px-4 shadow-sm"
-                           href="{{ path('app_bicycle_show', {'id': bicycle.id}) }}">Details <i class="fa-solid fa-circle-info"></i></a>
+                        <a class="btn btn-warning shadow-sm"
+                           href="{{ path('app_bicycle_show', {'id': bicycle.id}) }}"><i class="fas fa-fw fa-search"></i> View</a>
                     </div>
                 </div>
             </div>

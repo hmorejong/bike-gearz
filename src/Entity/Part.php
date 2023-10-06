@@ -23,7 +23,7 @@ class Part
     private ?string $color = null;
 
     #[ORM\Column(nullable: true)]
-    private ?float $size = null;
+    private ?string $size = null;
 
     #[ORM\ManyToOne(inversedBy: 'parts')]
     private ?Bicycle $bicycle = null;
@@ -72,12 +72,12 @@ class Part
         return $this;
     }
 
-    public function getSize(): ?float
+    public function getSize(): ?string
     {
         return $this->size;
     }
 
-    public function setSize(?float $size): static
+    public function setSize(?string $size): static
     {
         $this->size = $size;
 
