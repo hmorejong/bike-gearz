@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BicycleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BicycleRepository::class)]
@@ -30,6 +32,14 @@ class Bicycle
 
     #[ORM\Column(length: 255)]
     private ?string $category = null;
+
+    #[ORM\OneToMany(mappedBy: 'bicycle', targetEntity: Part::class)]
+    private Collection $parts;
+
+    public function __construct()
+    {
+        $this->parts = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -105,6 +115,36 @@ class Bicycle
     public function setCategory(string $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Part>
+     */
+    public function getParts(): Collection
+    {
+        return $this->parts;
+    }
+
+    public function addPart(Part $part): static
+    {
+        if (!$this->parts->contains($part)) {
+            $this->parts->add($part);
+            $part->setBicycle($this);
+        }
+
+        return $this;
+    }
+
+    public function removePart(Part $part): static
+    {
+        if ($this->parts->removeElement($part)) {
+            // set the owning side to null (unless already changed)
+            if ($part->getBicycle() === $this) {
+                $part->setBicycle(null);
+            }
+        }
 
         return $this;
     }
