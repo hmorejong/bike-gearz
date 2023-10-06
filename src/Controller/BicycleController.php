@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Bicycle;
+use App\Entity\Part;
 use App\Form\BicycleFormType;
+use App\Form\PartFormType;
 use App\Repository\BicycleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -77,5 +79,25 @@ class BicycleController extends AbstractController
         }
 
         return $this->redirectToRoute('app_bicycle_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/new-part/{id}/bike', name: 'app_new_part_bicycle', methods: ['GET', 'POST'])]
+    public function addPartToBike(Request $request, Bicycle $bicycle, EntityManagerInterface $entityManager): Response
+    {
+        $part = new Part();
+        $form = $this->createForm(PartFormType::class, $part);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $part->setBicycle($bicycle);
+            $entityManager->persist($part);
+            $entityManager->flush();
+            return $this->redirectToRoute('app_bicycle_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('part/new.html.twig', [
+            'part' => $part,
+            'form' => $form,
+        ]);
     }
 }

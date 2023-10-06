@@ -82,7 +82,7 @@ footer.sticky-footer {
 }
 
 .dropdown-menu {
-  min-width: 5.8rem!important;
+  min-width: 5.8rem !important;
 }
 
 .icon-preview {
@@ -100,6 +100,14 @@ footer.sticky-footer {
   color: #80808078;
   opacity: 1;
   font-size: 14px;
+}
+
+.table th {
+  font-weight: 500 !important;
+}
+
+.table td {
+  font-size: 15px;
 }
 
 @media (min-width: 768px) {
@@ -126,7 +134,7 @@ footer.sticky-footer {
   }
 
   .sidebar hr.sidebar-divider {
-    border-top: 1px solid #ffffffc4!important;
+    border-top: 1px solid #ffffffc4 !important;
     margin: 0 1rem 1rem;
   }
 

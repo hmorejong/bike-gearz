@@ -53,3 +53,7 @@ app_part_edit:
 app_part_delete:
     path: /bike/{id}/delete
     controller: App\Controller\PartController::delete
+
+app_new_part_bicycle:
+    path: /new-part/{id}/bike
+    controller: App\Controller\BicycleController::addPartToBike
