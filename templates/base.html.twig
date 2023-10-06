@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>BikeGearz {% block title %}{% endblock %}</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🚴‍️</text></svg>">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="icon"
+          href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🚴‍♀️</text></svg>">
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -13,6 +14,177 @@
     {% endblock %}
 </head>
 <body>
-{% block body %}{% endblock %}
+<div id="wrapper">
+    <ul class="navbar-nav bg-primary bg-gradient sidebar">
+        <li class="nav-item active">
+            <a class="sidebar-brand d-flex">
+                <div class="sidebar-brand-text">Bike Gearz</div>
+            </a>
+        </li>
+        <hr class="sidebar-divider my-0">
+        <li class="nav-item active">
+            <a class="nav-link">
+                <i class="fas fa-fw fa-bicycle me-1"></i>
+                <span>Bikes</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Parts</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Accessories</span></a>
+        </li>
+    </ul>
+    <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content">
+            <nav class="navbar navbar-expand bg-white topbar mb-4 pe-3 shadow-sm">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item cs-pointer">
+                        <a class="nav-link" href="{{ path('app_about') }}">
+                            <span class="text-primary">About</span></a>
+                    </li>
+                    <div class="topbar-divider d-none d-sm-block"></div>
+                    <li class="nav-item cs-pointer ">
+                        <a class="nav-link" href="{{ path('app_login') }}">
+                            <span class="text-primary">Login</span></a>
+                    </li>
+                    <div class="topbar-divider d-none d-sm-block"></div>
+                    <li class="nav-item cs-pointer">
+                        <a class="nav-link" href="{{ path('app_register') }}">
+                            <span class="text-primary">Register</span></a>
+                    </li>
+                    <div class="topbar-divider d-none d-sm-block"></div>
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="d-none d-lg-inline text-gray-600">User</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="container-fluid mt-5">
+                <div class="row justify-content-center">
+                    <div class="col text-center">
+                        {% block body %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- Footer -->
+        <footer class="text-center text-lg-start bg-light text-muted">
+
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"></section>
+
+            <!-- Section: Links  -->
+            <section class="">
+                <div class="container text-center text-md-start mt-5">
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <!-- Content -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                <i class="fas fa-bicycle me-3"></i>BIKE GEARZ
+                            </h6>
+                            <p>
+                                Explore this user-friendly platform guiding you to discover the ultimate destination for all your biking needs.
+                                Browse the selection, and gear up for your next ride with confidence.
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Useful links
+                            </h6>
+                            <p>
+                                <a href="{{ path('app_bicycle_index') }}" class="text-reset">Bikes</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Parts</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Accesories</a>
+                            </p>
+                            <p>
+                                <a href="{{ path('app_about') }}" class="text-reset">About</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Technologies
+                            </h6>
+                            <p>
+                                <a href="https://symfony.com/at-a-glance" class="text-reset" target="_blank">Symfony</a>
+                            </p>
+                            <p>
+                                <a href="https://getbootstrap.com/docs/5.3/getting-started/introduction/" class="text-reset" target="_blank">Bootstrap</a>
+                            </p>
+                            <p>
+                                <a href="https://www.mysql.com/" class="text-reset" target="_blank">MySQL</a>
+                            </p>
+                            <p>
+                                <a href="https://www.npmjs.com/about" class="text-reset" target="_blank">Npm</a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <!-- Links -->
+                            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                            <p>
+                                <a href="https://hanni.io/" class="text-reset" target="_blank">
+                                    <i class="fas fa-code me-3"></i>portfolio
+                                </a>
+                            </p>
+                            <p>
+                                <a href="https://github.com/hmorejong" class="text-reset" target="_blank">
+                                    <i class="fab fa-github me-3"></i> github
+                                </a>
+                            </p>
+
+                            <p>
+                                <a href="https://www.linkedin.com/in/hanni-morejon" class="text-reset" target="_blank">
+                                <i class="fab fa-linkedin me-3"></i> linkedin
+                                </a>
+                            </p>
+                            <p>
+                                <a href="mailto:?to=fullstack@hanni.io&subject=hanni.io%20-%20&#128690%20Presenting%20the%20Bike%20Gearz%20challenge%20&body=https%3A%2F%2Fhanni.io%2F" class="text-reset">
+                                    <i class="fa-solid fa-envelope me-3"></i> fullstack@hanni.io
+                                </a>
+                            </p>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                </div>
+            </section>
+            <!-- Section: Links  -->
+
+            <!-- Copyright -->
+            <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+                <script>new Date().getFullYear()>document.write(new Date().getFullYear());</script> &copy;  Bike Gearz
+            </div>
+            <!-- Copyright -->
+        </footer>
+    </div>
+</div>
 </body>
 </html>
+
+<style>
+    a {text-decoration: none;}
+</style>
