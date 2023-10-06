@@ -5,22 +5,22 @@
                 <div class="p-5">
                     {{ form_start(form) }}
                     <div class="mb-3">
-                        {{ form_widget(form.brand, {'attr': {'class': 'form-control','placeholder':'Type a Brand'}}) }}
+                        {{ form_widget(form.brand, {'attr': {'class': 'form-control','placeholder':'Type a Brand E.g "Trek"'}}) }}
                         {{ form_help(form.brand) }}
                         {{ form_errors(form.brand) }}
                     </div>
                     <div class="mb-3">
-                        {{ form_widget(form.model, {'attr': {'class': 'form-control','placeholder':'Type a Model'}}) }}
+                        {{ form_widget(form.model, {'attr': {'class': 'form-control','placeholder':'Type a Model E.g "Domane"'}}) }}
                         {{ form_help(form.model) }}
                         {{ form_errors(form.model) }}
                     </div>
                     <div class="mb-3">
-                        {{ form_widget(form.color, {'attr': {'class': 'form-control','placeholder':'Type a Color'}}) }}
+                        {{ form_widget(form.color, {'attr': {'class': 'form-control','placeholder':'Type a Color E.g "White"'}}) }}
                         {{ form_help(form.color) }}
                         {{ form_errors(form.color) }}
                     </div>
                     <div class="mb-3">
-                        {{ form_widget(form.price, {'attr': {'class': 'form-control','placeholder':'Enter a Price'}}) }}
+                        {{ form_widget(form.price, {'attr': {'class': 'form-control','placeholder':'Enter a Price in $'}}) }}
                         {{ form_help(form.price) }}
                         {{ form_errors(form.price) }}
                     </div>
@@ -35,7 +35,7 @@
                         {{ form_errors(form.category) }}
                     </div>
                     <div class="d-grid gap-2 mt-4">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary">Save <i class="fa fa-floppy-disk"></i></button>
                     </div>
                     {{ form_end(form) }}
                     <hr>

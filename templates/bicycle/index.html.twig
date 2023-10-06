@@ -3,12 +3,12 @@
 {% block title %}Bicycle Inventory{% endblock %}
 
 {% block body %}
-    <div class="row mx-5 mb-5">
+    <div class="row mx-5">
         <div class="col">
             <h1 class="h4 text-gray-900 pt-2">Bikes in Stock</h1>
         </div>
         <div class="col text-end pe-0">
-            <a class="btn btn-primary px-3 shadow-sm mb-3" href="{{ path('app_bicycle_new') }}">New Bike</a>
+            <a class="btn btn-primary px-3 shadow-sm mb-3" href="{{ path('app_bicycle_new') }}">New Bike <i class="fa fa-plus-circle"></i></a>
         </div>
     </div>
     <div class="list-group mx-5">
@@ -35,7 +35,7 @@
                             <div class="mb-3"></div>
                         {% endif %}
                         <a class="btn btn-secondary px-4 shadow-sm"
-                           href="{{ path('app_bicycle_show', {'id': bicycle.id}) }}">Details</a>
+                           href="{{ path('app_bicycle_show', {'id': bicycle.id}) }}">Details <i class="fa-solid fa-circle-info"></i></a>
                     </div>
                 </div>
             </div>
