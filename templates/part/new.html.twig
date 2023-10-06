@@ -3,9 +3,7 @@
 {% block title %}New Part{% endblock %}
 
 {% block body %}
-    <h1>Add New Part</h1>
+    <h1 class="h4 text-gray-900 pt-2 text-center">Add New Part</h1>
 
     {{ include('part/_form.html.twig') }}
-
-    <a href="{{ path('app_part_index') }}">back to list</a>
 {% endblock %}

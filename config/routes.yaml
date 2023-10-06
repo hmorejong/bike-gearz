@@ -51,7 +51,7 @@ app_part_edit:
     controller: App\Controller\PartController::edit
 
 app_part_delete:
-    path: /bike/{id}/delete
+    path: /part/{id}/delete
     controller: App\Controller\PartController::delete
 
 app_new_part_bicycle:

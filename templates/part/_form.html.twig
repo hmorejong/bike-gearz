@@ -1,4 +1,49 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-<button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-xl-5">
+        <div class="card border-0 shadow-lg my-2">
+            <div class="card-body p-0">
+                <div class="p-5">
+                    {{ form_start(form) }}
+                    <div class="mb-3 bike-form">
+                        {{ form_label(form.name) }}<span class="text-danger">*</span>
+                        {{ form_widget(form.name, {'attr': {'class': 'form-control','placeholder':'Type a name e.g "Crankset"'}}) }}
+                        {{ form_help(form.name) }}
+                        {{ form_errors(form.name) }}
+                    </div>
+                    <div class="mb-3 bike-form">
+                        {{ form_label(form.price) }}<span class="text-danger">*</span>
+                        {{ form_widget(form.price, {'attr': {'class': 'form-control','placeholder':'Enter price in $'}}) }}
+                        {{ form_help(form.price) }}
+                        {{ form_errors(form.price) }}
+                    </div>
+                    <div class="mb-3 bike-form">
+                        {{ form_label(form.color) }}
+                        {{ form_widget(form.color, {'attr': {'class': 'form-control','placeholder':'Enter color e.g "Black"'}}) }}
+                        {{ form_help(form.color) }}
+                        {{ form_errors(form.color) }}
+                    </div>
+                    <div class="mb-3 bike-form">
+                        {{ form_label(form.size) }}
+                        {{ form_widget(form.size, {'attr': {'class': 'form-control','placeholder':'Enter size e.g "175mm X 42/32/22T"'}}) }}
+                        {{ form_help(form.size) }}
+                        {{ form_errors(form.size) }}
+                    </div>
+                    <div class="mb-3 bike-form">
+                        {{ form_label(form.details) }}
+                        {{ form_widget(form.details, {'attr': {'class': 'form-control','placeholder':'Enter part details...'}}) }}
+                        {{ form_help(form.details) }}
+                        {{ form_errors(form.details) }}
+                    </div>
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary">Save <i class="fa fa-floppy-disk"></i></button>
+                    </div>
+                    {{ form_end(form) }}
+                    <hr>
+                    <div class="text-center">
+                        <a class="small" href="{{ path('app_part_index') }}">Back to list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

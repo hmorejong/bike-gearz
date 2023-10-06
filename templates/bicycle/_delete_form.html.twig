@@ -1,4 +1,7 @@
 <form method="post" action="{{ path('app_bicycle_delete', {'id': bicycle.id}) }}" onsubmit="return confirm('Are you sure you want to delete this bicycle?');">
+    <a class="btn btn-warning mb-3 shadow-sm" href="{{ path('app_new_part_bicycle',{'id': bicycle.id}) }}">
+        Add Part <i class="fas fa-fw fa-wrench"></i>
+    </a>
     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ bicycle.id) }}">
     <button class="btn btn-danger mb-3">Delete <i class="fa fa-trash"></i></button>
 </form>
