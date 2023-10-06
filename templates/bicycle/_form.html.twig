@@ -1,4 +1,49 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-xl-4 text-center">
+        <div class="card border-0 shadow-lg my-2">
+            <div class="card-body p-0">
+                <div class="p-5">
+                    {{ form_start(form) }}
+                    <div class="mb-3">
+                        {{ form_widget(form.brand, {'attr': {'class': 'form-control','placeholder':'Type a Brand'}}) }}
+                        {{ form_help(form.brand) }}
+                        {{ form_errors(form.brand) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_widget(form.model, {'attr': {'class': 'form-control','placeholder':'Type a Model'}}) }}
+                        {{ form_help(form.model) }}
+                        {{ form_errors(form.model) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_widget(form.color, {'attr': {'class': 'form-control','placeholder':'Type a Color'}}) }}
+                        {{ form_help(form.color) }}
+                        {{ form_errors(form.color) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_widget(form.price, {'attr': {'class': 'form-control','placeholder':'Enter a Price'}}) }}
+                        {{ form_help(form.price) }}
+                        {{ form_errors(form.price) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control','placeholder':'Description...'}}) }}
+                        {{ form_help(form.description) }}
+                        {{ form_errors(form.description) }}
+                    </div>
+                    <div class="mb-3">
+                        {{ form_widget(form.category, {'attr': {'class': 'form-control','placeholder':'Select Category'}}) }}
+                        {{ form_help(form.category) }}
+                        {{ form_errors(form.category) }}
+                    </div>
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                    {{ form_end(form) }}
+                    <hr>
+                    <div class="text-center">
+                        <a class="small" href="{{ path('app_bicycle_index') }}">Back to list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

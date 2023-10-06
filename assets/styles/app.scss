@@ -72,6 +72,20 @@ footer.sticky-footer {
   flex-shrink: 0;
 }
 
+.fa-circle-user {
+  font-size: 23px;
+  vertical-align: middle;
+}
+
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.icon-preview {
+  font-size: 50px;
+  color: #80808078;
+}
+
 @media (min-width: 768px) {
   .sidebar {
     width: 14rem !important;

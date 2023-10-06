@@ -20,13 +20,13 @@ class BicycleFormType extends AbstractType
             ->add('price')
             ->add('description')
             ->add('category', EnumType::class, ['class' => BicycleCategory::class,
-                'placeholder' => 'Choose an option',
+                'placeholder' => 'Select a Category',
                 'choice_label' => fn ($choice) => match ($choice) {
-                    BicycleCategory::Road => 'Road Bicycle',
-                    BicycleCategory::Gravel => 'Gravel Bicycle',
-                    BicycleCategory::Mountain => 'Mountain Bicycle',
-                    BicycleCategory::eBikes => 'eBikes Bicycle',
-                    BicycleCategory::Kids => 'Kids Bicycle',
+                    BicycleCategory::Road => 'Road Bike',
+                    BicycleCategory::Gravel => 'Gravel Bike',
+                    BicycleCategory::Mountain => 'Mountain Bike',
+                    BicycleCategory::eBikes => 'eBikes',
+                    BicycleCategory::Kids => 'Kids Bike',
                 },]);
     }
 

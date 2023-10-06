@@ -3,43 +3,42 @@
 {% block title %}Bicycle Inventory{% endblock %}
 
 {% block body %}
-    <h1>Bicycle Inventory</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Color</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Category</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="row mx-5 mb-5">
+        <div class="col">
+            <h1 class="h4 text-gray-900 pt-2">Bikes in Stock</h1>
+        </div>
+        <div class="col text-end pe-0">
+            <a class="btn btn-primary px-3 shadow-sm mb-3" href="{{ path('app_bicycle_new') }}">New Bike</a>
+        </div>
+    </div>
+    <div class="list-group mx-5">
         {% for bicycle in bicycles %}
-            <tr>
-                <td>{{ bicycle.id }}</td>
-                <td>{{ bicycle.brand }}</td>
-                <td>{{ bicycle.model }}</td>
-                <td>{{ bicycle.color }}</td>
-                <td>{{ bicycle.price }}</td>
-                <td>{{ bicycle.description }}</td>
-                <td>{{ bicycle.category }}</td>
-                <td>
-                    <a href="{{ path('app_bicycle_show', {'id': bicycle.id}) }}">show</a>
-                    <a href="{{ path('app_bicycle_edit', {'id': bicycle.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
+            <div class="list-group-item list-group-item-action py-3" aria-current="true">
+                <div class="row g-0">
+                    <div class="col-md-1 text-center">
+                        <div class="icon-preview">
+                            <i class="fas fa-fw fa-bicycle"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="d-flex w-100 justify-content-between mt-3">
+                            <h6 class="mb-1">{{ bicycle.brand }} ({{ bicycle.color }}) {{ bicycle.category }}</h6>
+                        </div>
+                        <p>{{ bicycle.model }}</p>
+                    </div>
+                    <div class="col-md-3 text-end">
+                        {% if bicycle.price %}
+                        <div>
+                            <h5 class="text-danger">${{ bicycle.price }}</h5>
+                        </div>
+                        {% elseif not bicycle.price %}
+                            <div class="mb-3"></div>
+                        {% endif %}
+                        <a class="btn btn-secondary px-4 shadow-sm"
+                           href="{{ path('app_bicycle_show', {'id': bicycle.id}) }}">Details</a>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('app_bicycle_new') }}">Create new</a>
+    </div>
 {% endblock %}
