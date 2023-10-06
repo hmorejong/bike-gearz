@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}About{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper {
+            max-width: 800px; width: 95%; font: 18px/1.5 sans-serif;
+            margin: 0 auto 1em;
+        }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+
+    <div class="example-wrapper">
+        <h1>About</h1>
+
+        <p class="pt-1">
+            Welcome to <strong>Bike Gearz</strong>, the Bike Parts and Accessories Inventory Challenge!
+        </p>
+        <p>
+            This challenge is designed to simulate the inventory management of a Bike Workshop using recent LAMP stack tech inspired in the context of the cycling industry.
+        </p>
+
+        <section class="tech-stack pt-3">
+            <h3>Technology Stack</h3>
+
+            <ul class="pt-1">
+                <li><strong>Frontend:</strong> HTML5, CSS3, JavaScript, Npm, Bootstrap 5.3</li>
+                <li><strong>Backend:</strong> PHP 8.2, Symfony Framework 6.3</li>
+                <li><strong>Database:</strong> MySQL 5.7</li>
+                <li><strong>Version Control:</strong> Git, GitHub</li>
+                <li><strong>Hosting:</strong> DO Droplet, Ubuntu 20.04</li>
+            </ul>
+        </section>
+
+        <h3 class="pt-3">How It Works</h3>
+
+        <p>Registration: Sign up to interact with the application and gain access to the bike parts and accessories inventory dataset.</p>
+
+        <p>Purpose: This application is inspired by real-world scenarios and influenced by a self-passion for the cycling world.</p>
+
+        <p>Data Management: For achieving CRUD operations, the app combines OOP with the MVC pattern and Symfony's framework toolset to speed up its creation and achieve data management of bike parts and accessories.</p>
+
+        <p class="pt-2">
+            Thank you for this opportunity, and happy cycling!
+        </p>
+    </div>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+    </style>
+{% endblock %}

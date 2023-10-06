@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>Bike Gearz - {% block title %}Welcome!{% endblock %}</title>
     <link rel="icon"
           href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>🚴‍♀️</text></svg>">
     {% block stylesheets %}
@@ -17,13 +17,13 @@
 <div id="wrapper">
     <ul class="navbar-nav bg-primary bg-gradient sidebar">
         <li class="nav-item active">
-            <a class="sidebar-brand d-flex">
+            <a class="sidebar-brand d-flex" href="{{ path('app_home') }}">
                 <div class="sidebar-brand-text">Bike Gearz</div>
             </a>
         </li>
         <hr class="sidebar-divider my-0">
         <li class="nav-item active">
-            <a class="nav-link">
+            <a class="nav-link" href="{{ path('app_bicycle_index') }}">
                 <i class="fas fa-fw fa-bicycle me-1"></i>
                 <span>Bikes</span></a>
         </li>
@@ -93,7 +93,7 @@
                                 <i class="fas fa-bicycle me-3"></i>BIKE GEARZ
                             </h6>
                             <p>
-                                Explore this user-friendly platform guiding you to discover the ultimate destination for all your biking needs.
+                                Explore this user-friendly POC guiding you to discover the ultimate destination for all your biking needs.
                                 Browse the selection, and gear up for your next ride with confidence.
                             </p>
                         </div>
