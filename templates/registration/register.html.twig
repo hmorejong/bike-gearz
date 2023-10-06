@@ -3,10 +3,7 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
-    {{ form_errors(registrationForm) }}
+
     <div class="row justify-content-center">
         <div class="col-md-6 col-xl-4 text-center">
             <div class="card border-0 shadow-lg my-5">
@@ -15,7 +12,15 @@
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Register an Account!</h1>
                         </div>
+
+                        {% for flash_error in app.flashes('verify_email_error') %}
+                            <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                        {% endfor %}
+
+                        {{ form_errors(registrationForm) }}
+
                         {{ form_start(registrationForm) }}
+
                         <div class="mb-3">
                             {{ form_widget(registrationForm.firstName, {'attr': {'class': 'form-control','placeholder':'Enter first name'}}) }}
                             {{ form_help(registrationForm.firstName) }}
