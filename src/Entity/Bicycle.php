@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Config\BicycleCategory;
 use App\Repository\BicycleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -29,8 +28,8 @@ class Bicycle
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column(type: "string", enumType: BicycleCategory::class)]
-    private BicycleCategory $category;
+    #[ORM\Column(length: 255)]
+    private ?string $category = null;
 
 
     public function getId(): ?int
@@ -100,11 +99,13 @@ class Bicycle
 
     public function getCategory(): ?string
     {
-        return $this->category->value;
+        return $this->category;
     }
 
-    public function setCategory(BicycleCategory $category): void
+    public function setCategory(string $category): static
     {
         $this->category = $category;
+
+        return $this;
     }
 }

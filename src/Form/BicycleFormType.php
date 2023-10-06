@@ -2,10 +2,10 @@
 
 namespace App\Form;
 
-use App\Config\BicycleCategory;
 use App\Entity\Bicycle;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EnumType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,16 +18,17 @@ class BicycleFormType extends AbstractType
             ->add('model')
             ->add('color')
             ->add('price')
-            ->add('description')
-            ->add('category', EnumType::class, ['class' => BicycleCategory::class,
-                'placeholder' => 'Select a Category',
-                'choice_label' => fn ($choice) => match ($choice) {
-                    BicycleCategory::Road => 'Road Bike',
-                    BicycleCategory::Gravel => 'Gravel Bike',
-                    BicycleCategory::Mountain => 'Mountain Bike',
-                    BicycleCategory::eBikes => 'eBikes',
-                    BicycleCategory::Kids => 'Kids Bike',
-                },]);
+            ->add('description', TextareaType::class)
+            ->add('category', ChoiceType::class, [
+                'placeholder' => 'Choose a category',
+                'choices'  => [
+                    'Road Bike' => 'Road',
+                    'Gravel Bike' => 'Gravel',
+                    'Mountain Bike' => 'Mountain',
+                    'eBikes' => 'eBikes',
+                    'Kids Bike' => 'Kids',
+                ],
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
