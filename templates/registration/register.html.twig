@@ -6,19 +6,47 @@
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
-
-    <h1>Register</h1>
-
     {{ form_errors(registrationForm) }}
-
-    {{ form_start(registrationForm) }}
-    {{ form_row(registrationForm.firstName) }}
-    {{ form_row(registrationForm.lastName) }}
-    {{ form_row(registrationForm.email) }}
-    {{ form_row(registrationForm.plainPassword, {
-        label: 'Password'
-    }) }}
-
-    <button type="submit" class="btn btn-primary">Register</button>
-    {{ form_end(registrationForm) }}
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-xl-4 text-center">
+            <div class="card border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Register an Account!</h1>
+                        </div>
+                        {{ form_start(registrationForm) }}
+                        <div class="mb-3">
+                            {{ form_widget(registrationForm.firstName, {'attr': {'class': 'form-control','placeholder':'Enter first name'}}) }}
+                            {{ form_help(registrationForm.firstName) }}
+                            {{ form_errors(registrationForm.firstName) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_widget(registrationForm.lastName, {'attr': {'class': 'form-control','placeholder':'Enter last name'}}) }}
+                            {{ form_help(registrationForm.lastName) }}
+                            {{ form_errors(registrationForm.lastName) }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control','placeholder':'Enter email address'}}) }}
+                            {{ form_help(registrationForm.email) }}
+                            {{ form_errors(registrationForm.email) }}
+                        </div>
+                        <div>
+                            {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control','placeholder':'Enter password'}}) }}
+                            {{ form_help(registrationForm.plainPassword) }}
+                            {{ form_errors(registrationForm.plainPassword) }}
+                        </div>
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary">Register account</button>
+                        </div>
+                        {{ form_end(registrationForm) }}
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" href="{{ path('app_login') }}">Already have an account? Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

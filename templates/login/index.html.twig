@@ -7,15 +7,36 @@
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    <form action="{{ path('app_login') }}" method="post">
-        <label for="username">Email:</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-xl-4 text-center">
+            <div class="card border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                        </div>
+                        <form action="{{ path('app_login') }}" method="post">
+                            <div class="mb-3">
+                                <input type="email" class="form-control"
+                                       id="username" name="_username" value="{{ last_username }}"
+                                       placeholder="Enter email address...">
+                            </div>
+                            <div>
+                                <input type="password" class="form-control" id="password" name="_password" placeholder="Password">
+                                <input type="hidden" name="_target_path" value="/">
+                            </div>
+                            <div class="d-grid gap-2 mt-4">
+                                <button type="submit" class="btn btn-primary">Login</button>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="_password">
-
-        <input type="hidden" name="_target_path" value="/">
-
-        <button type="submit" class="btn btn-primary">login</button>
-    </form>
+                            </div>
+                            <hr>
+                        </form>
+                        <div class="text-center">
+                            <a class="small" href="{{ path('app_register') }}">New here? Create an account</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

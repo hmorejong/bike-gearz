@@ -21,7 +21,7 @@
                 <div class="sidebar-brand-text">Bike Gearz</div>
             </a>
         </li>
-        <hr class="sidebar-divider my-0">
+        <hr class="sidebar-divider my-0" />
         <li class="nav-item active">
             <a class="nav-link" href="{{ path('app_bicycle_index') }}">
                 <i class="fas fa-fw fa-bicycle me-1"></i>
@@ -66,11 +66,7 @@
                 </ul>
             </nav>
             <div class="container-fluid mt-5">
-                <div class="row justify-content-center">
-                    <div class="col text-center">
-                        {% block body %}{% endblock %}
-                    </div>
-                </div>
+                {% block body %}{% endblock %}
             </div>
         </div>
 
