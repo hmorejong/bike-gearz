@@ -31,6 +31,14 @@
                         <p>{{ bicycle.description }}</p>
                     </div>
                     {% endif %}
+
+                    {% if bicycle.referenceLink %}
+                        <div class="mt-4">
+                            <span class="fw-bold">Manufacturer Link</span>
+                        </div>
+                        <a href="{{ bicycle.referenceLink }}" target="_blank">{{ bicycle.brand }} {{ bicycle.model }}</a>
+                    {% endif %}
+
                     {% if bicycle.parts.count > 0 %}
                         <div class="mt-4">
                             <span class="fw-bold">Parts</span>

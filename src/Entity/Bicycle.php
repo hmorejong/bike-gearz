@@ -30,6 +30,9 @@ class Bicycle
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $referenceLink = null;
+
     #[ORM\Column(length: 255)]
     private ?string $category = null;
 
@@ -103,6 +106,18 @@ class Bicycle
     public function setDescription(?string $description): static
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getReferenceLink(): ?string
+    {
+        return $this->referenceLink;
+    }
+
+    public function setReferenceLink(?string $referenceLink): static
+    {
+        $this->referenceLink = $referenceLink;
 
         return $this;
     }

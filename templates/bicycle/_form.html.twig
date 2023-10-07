@@ -34,6 +34,12 @@
                         {{ form_help(form.description) }}
                         {{ form_errors(form.description) }}
                     </div>
+                     <div class="mb-3 bike-form">
+                        {{ form_label(form.referenceLink) }}
+                        {{ form_widget(form.referenceLink, {'attr': {'class': 'form-control','placeholder':'Enter an URL'}}) }}
+                        {{ form_help(form.referenceLink) }}
+                        {{ form_errors(form.referenceLink) }}
+                    </div>
                     <div class="mb-3 bike-form">
                         {{ form_label(form.category) }}<span class="text-danger">*</span>
                         {{ form_widget(form.category, {'attr': {'class': 'form-select','placeholder':'Select Category'}}) }}
