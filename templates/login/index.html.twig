@@ -30,7 +30,7 @@
                                 <button type="submit" class="btn btn-primary">Login</button>
                             </div>
                             <hr>
-                            <input type="hidden" name="_target_path" value="/bikes">
+                            <input type="hidden" name="_target_path" value="{{ path('app_home') }}">
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                         </form>
                         <div class="text-center">

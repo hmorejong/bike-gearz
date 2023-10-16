@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/bicycle')]
+#[Route('/bike')]
 class BicycleController extends AbstractController
 {
     #[Route('/bikes', name: 'app_bicycle_index', methods: ['GET'])]
@@ -25,15 +25,16 @@ class BicycleController extends AbstractController
     }
 
     #[Route('/new-bike', name: 'app_bicycle_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $em): Response
     {
         $bicycle = new Bicycle();
         $form = $this->createForm(BicycleFormType::class, $bicycle);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($bicycle);
-            $entityManager->flush();
+
+            $em->persist($bicycle);
+            $em->flush();
 
             return $this->redirectToRoute('app_bicycle_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -44,7 +45,7 @@ class BicycleController extends AbstractController
         ]);
     }
 
-    #[Route('/bike/{id}/show', name: 'app_bicycle_show', methods: ['GET'])]
+    #[Route('/{id}/show', name: 'app_bicycle_show', methods: ['GET'])]
     public function show(Bicycle $bicycle): Response
     {
         return $this->render('bicycle/show.html.twig', [
@@ -52,14 +53,16 @@ class BicycleController extends AbstractController
         ]);
     }
 
-    #[Route('/bike/{id}/edit', name: 'app_bicycle_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Bicycle $bicycle, EntityManagerInterface $entityManager): Response
+    #[Route('/{id}/edit', name: 'app_bicycle_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request,
+                         Bicycle $bicycle,
+                         EntityManagerInterface $em): Response
     {
         $form = $this->createForm(BicycleFormType::class, $bicycle);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $em->flush();
 
             return $this->redirectToRoute('app_bicycle_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -70,28 +73,36 @@ class BicycleController extends AbstractController
         ]);
     }
 
-    #[Route('/bike/{id}/delete', name: 'app_bicycle_delete', methods: ['POST'])]
-    public function delete(Request $request, Bicycle $bicycle, EntityManagerInterface $entityManager): Response
+    #[Route('/{id}/delete', name: 'app_bicycle_delete', methods: ['POST'])]
+    public function delete(Request $request,
+                           Bicycle $bicycle,
+                           EntityManagerInterface $em): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$bicycle->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($bicycle);
-            $entityManager->flush();
+
+        if ($this->isCsrfTokenValid('delete' . $bicycle->getId(), $request->request->get('_token'))) {
+
+            $em->remove($bicycle);
+            $em->flush();
         }
 
         return $this->redirectToRoute('app_bicycle_index', [], Response::HTTP_SEE_OTHER);
     }
 
     #[Route('/new-part/{id}/bike', name: 'app_new_part_bicycle', methods: ['GET', 'POST'])]
-    public function addPartToBike(Request $request, Bicycle $bicycle, EntityManagerInterface $entityManager): Response
+    public function addPartToBike(Request $request,
+                                  Bicycle $bicycle,
+                                  EntityManagerInterface $em): Response
     {
         $part = new Part();
         $form = $this->createForm(PartFormType::class, $part);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
             $part->setBicycle($bicycle);
-            $entityManager->persist($part);
-            $entityManager->flush();
+            $em->persist($part);
+            $em->flush();
+
             return $this->redirectToRoute('app_bicycle_index', [], Response::HTTP_SEE_OTHER);
         }
 

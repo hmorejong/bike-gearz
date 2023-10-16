@@ -2,58 +2,6 @@ app_home:
     path: /
     controller: App\Controller\BicycleController::index
 
-app_register:
-    path: /register
-    controller: App\Controller\RegistrationController::register
-
-app_login:
-    path: /login
-    controller: App\Controller\LoginController::index
-
 app_logout:
     path: /logout
     controller: App\Controller\LoginController::index
-
-app_bicycle_index:
-    path: /bikes
-    controller: App\Controller\BicycleController::index
-
-app_bicycle_new:
-    path: /new-bike
-    controller: App\Controller\BicycleController::new
-
-app_bicycle_show:
-    path: /bike/{id}/show
-    controller: App\Controller\BicycleController::show
-
-app_bicycle_edit:
-    path: /bike/{id}/edit
-    controller: App\Controller\BicycleController::edit
-
-app_bicycle_delete:
-    path: /bike/{id}/delete
-    controller: App\Controller\BicycleController::delete
-
-app_part_index:
-    path: /parts
-    controller: App\Controller\PartController::index
-
-app_part_new:
-    path: /new-part
-    controller: App\Controller\PartController::new
-
-app_part_show:
-    path: /part/{id}/show
-    controller: App\Controller\PartController::show
-
-app_part_edit:
-    path: /part/{id}/edit
-    controller: App\Controller\PartController::edit
-
-app_part_delete:
-    path: /part/{id}/delete
-    controller: App\Controller\PartController::delete
-
-app_new_part_bicycle:
-    path: /new-part/{id}/bike
-    controller: App\Controller\BicycleController::addPartToBike

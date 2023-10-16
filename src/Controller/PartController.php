@@ -23,15 +23,16 @@ class PartController extends AbstractController
     }
 
     #[Route('/new-part', name: 'app_part_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $em): Response
     {
         $part = new Part();
         $form = $this->createForm(PartFormType::class, $part);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($part);
-            $entityManager->flush();
+
+            $em->persist($part);
+            $em->flush();
 
             return $this->redirectToRoute('app_part_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -42,7 +43,7 @@ class PartController extends AbstractController
         ]);
     }
 
-    #[Route('/part/{id}/show', name: 'app_part_show', methods: ['GET'])]
+    #[Route('/{id}/show', name: 'app_part_show', methods: ['GET'])]
     public function show(Part $part): Response
     {
         return $this->render('part/show.html.twig', [
@@ -50,30 +51,36 @@ class PartController extends AbstractController
         ]);
     }
 
-    #[Route('/part/{id}/edit', name: 'app_part_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Part $part, EntityManagerInterface $entityManager): Response
+    #[Route('/{id}/edit', name: 'app_part_edit', methods: ['GET', 'POST'])]
+    public function edit(Part $part,
+                         Request $request,
+                         EntityManagerInterface $em): Response
     {
         $form = $this->createForm(PartFormType::class, $part);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+            $em->flush();
 
             return $this->redirectToRoute('app_part_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('part/edit.html.twig', [
             'part' => $part,
-            'form' => $form,
+            'form' => $form
         ]);
     }
 
-    #[Route('/bike/{id}/delete', name: 'app_part_delete', methods: ['POST'])]
-    public function delete(Request $request, Part $part, EntityManagerInterface $entityManager): Response
+    #[Route('/{id}/delete', name: 'app_part_delete', methods: ['POST'])]
+    public function delete(Request $request,
+                           Part $part,
+                           EntityManagerInterface $em): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$part->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($part);
-            $entityManager->flush();
+
+        if ($this->isCsrfTokenValid('delete' . $part->getId(), $request->request->get('_token'))) {
+
+            $em->remove($part);
+            $em->flush();
         }
 
         return $this->redirectToRoute('app_part_index', [], Response::HTTP_SEE_OTHER);
