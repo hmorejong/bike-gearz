@@ -76,10 +76,12 @@ class BicycleController extends AbstractController
     #[Route('/{id}/delete', name: 'app_bicycle_delete', methods: ['POST'])]
     public function delete(Request $request,
                            Bicycle $bicycle,
+                           BicycleRepository $bicycleRepository,
                            EntityManagerInterface $em): Response
     {
 
         if ($this->isCsrfTokenValid('delete' . $bicycle->getId(), $request->request->get('_token'))) {
+            $bicycleRepository->removeAssociations($bicycle);
 
             $em->remove($bicycle);
             $em->flush();
