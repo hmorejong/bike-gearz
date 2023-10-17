@@ -7,6 +7,7 @@ use App\Entity\Part;
 use App\Form\BicycleFormType;
 use App\Form\PartFormType;
 use App\Repository\BicycleRepository;
+use App\Service\MessageGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,17 +26,19 @@ class BicycleController extends AbstractController
     }
 
     #[Route('/new-bike', name: 'app_bicycle_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $em): Response
+    public function new(Request $request,
+                        MessageGenerator $messageGenerator,
+                        EntityManagerInterface $em): Response
     {
         $bicycle = new Bicycle();
         $form = $this->createForm(BicycleFormType::class, $bicycle);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $em->persist($bicycle);
             $em->flush();
 
+            $this->addFlash('notice', $messageGenerator->getHappyMessage());
             return $this->redirectToRoute('app_bicycle_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -93,6 +96,7 @@ class BicycleController extends AbstractController
     #[Route('/new-part/{id}/bike', name: 'app_new_part_bicycle', methods: ['GET', 'POST'])]
     public function addPartToBike(Request $request,
                                   Bicycle $bicycle,
+                                  MessageGenerator $messageGenerator,
                                   EntityManagerInterface $em): Response
     {
         $part = new Part();
@@ -105,6 +109,7 @@ class BicycleController extends AbstractController
             $em->persist($part);
             $em->flush();
 
+            $this->addFlash('notice', $messageGenerator->getHappyMessage());
             return $this->redirectToRoute('app_bicycle_index', [], Response::HTTP_SEE_OTHER);
         }
 

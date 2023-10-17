@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Part;
 use App\Form\PartFormType;
 use App\Repository\PartRepository;
+use App\Service\MessageGenerator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,17 +24,19 @@ class PartController extends AbstractController
     }
 
     #[Route('/new-part', name: 'app_part_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $em): Response
+    public function new(Request $request,
+                        MessageGenerator $messageGenerator,
+                        EntityManagerInterface $em): Response
     {
         $part = new Part();
         $form = $this->createForm(PartFormType::class, $part);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $em->persist($part);
             $em->flush();
 
+            $this->addFlash('notice', $messageGenerator->getHappyMessage());
             return $this->redirectToRoute('app_part_index', [], Response::HTTP_SEE_OTHER);
         }
 
